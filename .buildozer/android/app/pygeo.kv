@@ -1,0 +1,78 @@
+#:kivy 1.9
+#:import exit sys.exit
+
+
+<RootWidget>:
+    user_input: user_input
+    target_str: target_str
+    out_key: out_key
+    out_val: out_val
+
+    orientation: 'vertical'
+    padding: '20dp'
+    spacing: '20dp'
+
+    canvas.before:
+        Color:
+            rgba: .3, .5, 1, .5
+        Rectangle:
+            source: 'globe.png'
+            size: root.width/1.5, root.height/1.5
+            pos: root.width/2., root.height/2.
+
+    Label:
+        size_hint_y: .1
+        markup: True
+        font_size: '20dp'
+        text: "[color=#B2B2B2]PyGeo IP Locator[/color]"
+
+    Label:
+        size_hint_y: .1
+        markup: True
+        text: "[color=#B2B2B2]Enter IP address or Domain Name[/color]"
+
+    TextInput:
+        id: user_input
+        size_hint: .75, .075
+        pos_hint: {'x': .125}
+        on_text_validate: root.get_info()
+        hint_text: 'x.x.x.x/google.com'
+        multiline: False
+        background_color: 1, 1, 1, .8
+
+    Button:
+        size_hint: .2, .05
+        pos_hint: {'x': .4}
+        text: 'Go'
+        on_press: root.get_info()
+
+    Label:
+        id: target_str
+        size_hint: 1, .1
+        #text: "[color=#B2B2B2]No Target Specified[/color]"
+        markup: True
+
+    BoxLayout:
+        size_hint: 1, .45
+        spacing: '10dp'
+
+        Label:
+            id: out_key
+            text_size: self.size
+            markup: True
+            halign: 'right'
+            valign: 'middle'
+
+        Label:
+            id: out_val
+            text_size: self.size
+            markup: True
+            halign: 'left'
+            valign: 'middle'
+
+    Button:
+        size_hint: .2, .05
+        pos_hint: {'x': .4}
+        text: 'Exit'
+        on_press: exit(0)
+
