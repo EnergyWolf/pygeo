@@ -1,10 +1,6 @@
-# simple GUI for pygeoip
 __version__ = '1.0'
 
 from kivy.app import App
-from kivy.config import Config
-#Config.set('graphics', 'height', 640)
-Config.set('graphics', 'width', 320)
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 
